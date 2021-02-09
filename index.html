@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifos</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilo.css" id="estilo">
+</head>
+<body>
+
+    <header class="header-principal">
+        <div class="centrado">
+            <a href="index.html"><img src="img/logo-desktop.svg" alt="logo-desktop" id="logo-desktop"></a>
+        </div>
+        <a href="" class="menu-mobile"><i class="fa fa-bars" aria-hidden="true"></i></a>
+        <a href="" class="cerrar-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
+        <nav class="nav-principal">
+            <a href="#" id="cambiar-modo">MODO NOCTURNO</a>
+            <a href="favoritos.html">FAVORITOS</a>
+            <a href="gifos.html">MIS GIFOS</a>
+            <a href="agregar_gifo.html" class="agregar-gif"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </nav>
+    </header>
+
+    <section class="seccion contenedor seccion-busqueda">
+        <div class="contenedor-seccion-busqueda">
+            <h1 class="centrado">Inspirate, busca, guarda y crea los mejores <span class="verde">GIFOS</span></h1>
+            <div class="centrado" >
+                <img src="img/ilustra_header.svg" alt="ilustra-header" id="ilustra-header">
+            </div>
+            <div class="busqueda centrado">
+                <input type="text" id="busqueda-gif" placeholder="Busca GIFOS y mas">
+                <img src="img/icon-search.svg" alt="icon-search" class="icono-search" id="icono-search">
+            </div>
+            <div class="trending centrado">
+                <h3 class="centrado">Trending:</h3>
+                <p class="centrado">Reactions, Entertainment, Sports, Stickers, Artists</p>
+            </div>
+            
+            <div class="centrado">
+                <a href="#" id="ver-mas" class="boton boton-morado">VER MAS</a>
+            </div>
+            <div class="centrado">
+                <a href="#" id="ver-menos" class="boton boton-morado">AL PRINCIPIO</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section seccion-trending">
+        <div class="contenedor contenedor-seccion-trending">
+            <h2 class="centrado">Trending GIFOS</h2>
+            <p class="centrado">Mira los ultimos GIFOS de nuestra comunidad.</p>
+            <div class="centrado gifos-trending">
+                <div class="centrado">
+                    <img src="img/button-slider-left.svg" alt="" class="slider-button" id="slider-button-left">
+                </div>
+                <div class="contenido-gifos-trending">
+                </div>
+                <div class="centrado">
+                    <img src="img/Button-Slider-right.svg" alt="" class="slider-button" id="slider-button-right">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="contenedor footer-principal">
+        <div class="compartir">
+            <p class="centrado">Compartir en :</p>
+            <nav class="sociales centrado"> 
+                <a href="https://es-la.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/?lang=es" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </nav>
+        </div>
+        <p class="centrado">&copy; GIFOS 2020 All Rights Reserved.</p>
+    </footer>
+
+</body>
+<script src="js/main.js"></script>
+<script src="js/main-2.js"></script>
+</html>
