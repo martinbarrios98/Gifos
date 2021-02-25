@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/estilo.css" id="estilo">
 </head>
-<body>
+<body class="cuerpo-principal">
 
     <header class="header-principal">
         <div class="centrado">
@@ -26,39 +26,39 @@
         </nav>
     </header>
 
-    <section class="contenedor seccion-favoritos">
-        <div class="contenedor-seccion-favoritos">
-            <div class="centrado">
-                <i class="fa fa-heart" aria-hidden="true"></i>
-                <h2 class="centrado">Mis GIFOS</h2>
-            </div>
-            <div class="favoritos" id="gifos">
-            </div>
-            <div class="centrado">
-                <a href="#" class="boton boton-morado" id="ver-mas">VER MAS</a>
-            </div>
-            <div class="centrado">
-                <a href="#" class="boton boton-morado" id="ver-menos">VER MENOS</a>
+   <section class="contenedor seccion-crear-gif">
+        <div class="camara-crear" id="camara-crear">
+            <img src="img/camara.svg" alt="">
+        </div>
+        <div class="contenedor-crear-gif">
+            <div class="contenido-crear-gif">
+                <h1 class="contenedor centrado h1-escritorio">Aqui podras crear tus propios <span class="verde">GIFOS</span></h1>
+                <p class="centrado">Crea tu GIFO en solo 3 pasos!</p>
+                <p class="centrado">(Necesitas solamente tener una camara para grabarlo)</p>
             </div>
         </div>
-    </section>
-
-    <section class="section seccion-trending">
-        <div class="contenedor contenedor-seccion-trending">
-            <h2 class="centrado">Trending GIFOS</h2>
-            <p class="centrado">Mira los ultimos GIFOS de nuestra comunidad.</p>
-            <div class="centrado gifos-trending">
-                <div class="centrado">
-                    <img src="img/button-slider-left.svg" alt="" class="slider-button" id="slider-button-left">
+        <div class="contenedor-pasos-gif">
+            <div class="pasos centrado">
+                <div class="paso">
+                    <p>1</p>
                 </div>
-                <div class="contenido-gifos-trending">
+                <div class="paso">
+                    <p>2</p>
                 </div>
-                <div class="centrado">
-                    <img src="img/Button-Slider-right.svg" alt="" class="slider-button" id="slider-button-right">
+                <div class="paso">
+                    <p>3</p>
                 </div>
             </div>
+            <div class="border-pasos centrado">
+            </div>
+            <div class="centrado">
+                <a href="#" class="boton boton-morado" id="crear-gif">COMENZAR</a>
+            </div>
         </div>
-    </section>
+        <div class="pelicula-crear" id="pelicula-crear">
+            <img src="img/pelicula.svg" alt="">
+        </div>
+   </section>
 
     <footer class="contenedor footer-principal">
         <div class="compartir">
@@ -72,7 +72,8 @@
         <p class="centrado">&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
 
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/main-2.js"></script>
 </body>
+
 </html>

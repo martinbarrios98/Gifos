@@ -95,12 +95,65 @@ img{
     text-transform: capitalize;
 }
 
+.hoover-padre{
+    width: 210.453px;
+    height: 22rem;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+@media (min-width:1350px){
+    .hoover-padre{
+        width: 28rem;
+    }
+}
+
+.hoover-hijo{
+    background: rgba(87,46,229,0.90);
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.hoover-hijo div:first-child{
+    text-align: right;
+}
+
+.opciones-gif-hoover img{
+    width: 4rem!important;
+    margin: 1rem .1rem!important;
+    height: 2.2rem!important;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.hoover-hijo div:last-child{
+    margin: 9rem 0;
+    padding: 0 1rem;
+}
+
+.hoover-hijo p:first-child{
+    font-size: 1.4rem;
+    color: var(--blaco);
+    font-weight: bold;
+}
+
+.hoover-hijo p:last-child{
+    font-size: 1.6rem;
+    color: var(--blaco);
+    font-weight: bold;
+}
+
 /** BOTONES **/
 
 .boton{
     display: inline-block;
     text-decoration: none;
     transition: all .4s ease-in-out;
+    cursor: pointer;
 }
 
 .boton-morado{
@@ -166,7 +219,7 @@ img{
 }
 
 .agregar-gif{
-    display: none;
+    display: inline-block;
 }
 
 .menu-mobile{
@@ -217,7 +270,7 @@ img{
     border: 1px solid var(--morado);
     border-radius: 4rem;
     display: inline-block;
-    width: 100%;
+    width: 95%;
     padding: 2.5rem 5rem;
 }
 
@@ -241,8 +294,9 @@ img{
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1rem auto auto;
     transition: all .3s ease-in-out;
+    width: 95%;
 }
 
 .contenido-resultado-busqueda img{
@@ -251,6 +305,22 @@ img{
     flex-basis: calc(50% - 1rem);
     margin: 1rem 0;
     cursor: pointer;
+}
+
+@media (min-width: 768px){
+    .contenido-resultado-busqueda img{
+        width: 15rem;
+        height: 22rem;
+        flex-basis: calc(33% - 1rem);
+    }
+}
+
+@media (min-width: 1024px){
+    .contenido-resultado-busqueda img{
+        width: 15rem;
+        height: 22rem;
+        flex-basis: 22%
+    }
 }
 
 .trending{
@@ -266,6 +336,9 @@ img{
 .busqueda-border{
     border: 1px solid var(--morado);
     border-radius: 4rem;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sugerencias{
@@ -294,18 +367,6 @@ img{
     max-width: 80%;
 }
 
-@media (min-width:768px){
-    #ilustra-header{
-        max-width: 100%;
-    }
-}
-
-@media (min-width:1024px){
-    #ilustra-header{
-        max-width: 120%;
-    }
-}
-
 .icono-search{
     height: 2.5rem;
     position: absolute;
@@ -323,20 +384,47 @@ img{
     overflow: hidden;
 }
 
+@media (min-width:768px){
+    #ilustra-header{
+        max-width: 100%;
+    }
+    .icono-search{
+        right: 4.4rem;
+    }
+    .busqueda-border{
+        width: 77%;
+    }
+    .icono-serach-busqueda{
+        right: 5.4rem;
+    }
+}
+
 @media (min-width:1024px){
+    #ilustra-header{
+        max-width: 120%;
+    }
+    .h1-escritorio{
+        max-width: 60rem;
+    }
     .seccion-busqueda{
         margin: 5rem auto;
-        max-width: 60rem;
     }
     .busqueda img:first-child{
         width: 50%;
     }
     .busqueda input{
-        width: 100%;
+        width: 60%;
         padding: 2rem 5rem;
     }
     .icono-search{
-        bottom: 1.5rem
+        bottom: 1.5rem;
+        right: 31rem;
+    }
+    .icono-serach-busqueda{
+        right: 7rem;
+    }
+    .busqueda-border{
+        width: 70%;
     }
 }
 
@@ -348,19 +436,25 @@ img{
     width: 100%;
     height: 100%;
     z-index: 2;
-    padding: 5rem 2rem;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
+    z-index: 4;
+}
+
+.gif-max-img{
+    width: 100%;
+    height: 33.3rem;
 }
 
 #close-gif-max{
-    width: 2rem;
-    padding: 5rem 0;
+    width: 1.5rem;
+    padding: 2rem 0;
 }
 
 .contenedor-info-gif{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -373,16 +467,56 @@ img{
 }
 
 .contenedor-info-gif div:first-child p:last-child{
+    font-size: 1rem;
     font-weight: bold;
 }
 
 .contenedor-info-gif div:last-child{
     text-align: right;
+    cursor: pointer;
 }
 
 .contenedor-info-gif div:last-child img{
-    width: 20%;
+    width: 36%;
     margin: 0 5px;
+}
+
+@media (min-width:768px){
+    .gif-max-img{
+        width: 36.4rem;
+        height: 36.4rem;
+        margin: 0 auto;
+    }
+    .contenedor-info-gif{
+        justify-content: space-around;
+    }
+    #close-gif-max{
+        margin-right: 18rem;
+    }
+}
+
+@media (min-width:1024px){
+    .gif-max-img{
+        width: 54rem;
+        height: 33rem;
+        margin: 4rem auto;
+    }
+    #close-gif-max{
+        margin-right: 19rem;
+    }
+    
+}
+
+@media (min-width:1350px){
+    .gif-max-img{
+        width: 54rem;
+        height: 40rem;
+        margin: 0 auto;
+    }
+    #close-gif-max{
+        margin-right: 19rem;
+    }
+    
 }
 
 /** SECCION TRENDING **/
@@ -418,11 +552,10 @@ img{
     display: none;
 }
 
-.contenido-gifos-trending img{
-    width: 24.3rem;
-    height: 18.7rem;
-    padding: 0 1rem;
-    margin: 1rem 0;
+.gif-com2{
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem;
 }
 
 .info-gifos{
@@ -436,9 +569,9 @@ img{
 }
 
 @media (min-width:768px){
-    .contenido-gifos-trending img{
-        width: 36rem;
-        height: 25rem;
+    .gif-com2{
+        width: 20rem;
+        height: 22rem;
     }
 }
 
@@ -452,9 +585,51 @@ img{
     .contenido-gifos-trending{
         margin: 0 1rem;
     }
-    .contenido-gifos-trending img{
-        width: 23rem;
-        height: 19rem;
+    .gif-com2{
+        min-width: 22rem;
+        min-height: 22rem;
+    }
+    .hoover-trending{
+        background-size: cover;
+        background-position: center center;
+        margin: 1rem;
+        min-width: 22rem;
+        min-height: 22rem;
+    }
+    .hoover-trending-hijo{
+        background: rgba(87,46,229,0.90);
+        opacity: 0.7;
+        width: 100%;
+        height: 100%;
+        transition: all .3s ease-in-out;
+    }
+    .trending-opciones-gif-hoover{
+        text-align: right;
+    }
+    .trending-opciones-gif-hoover img{
+        width: 4rem!important;
+        margin: 1rem .1rem!important;
+        height: 2.2rem!important;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+    }
+    .hoover-trending-hijo div:last-child{
+        margin-top: 3rem;
+        padding: 0 1rem;
+        text-align: left;
+    }
+    
+    .hoover-trending-hijo p:first-child{
+        font-size: 1.3rem;
+        color: var(--blaco);
+        font-weight: bold;
+    }
+    
+    .hoover-trending-hijo p:last-child{
+        font-size: 1.5rem;
+        color: var(--blaco);
+        font-weight: bold;
     }
     .info-gifos{
         display: inline-block;
@@ -467,9 +642,9 @@ img{
 }
 
 @media (min-width:1350px){
-    .contenido-gifos-trending img{
-        width: 30rem;
-        height: 25rem;
+    .gif-com2{
+        min-width: 22rem;
+        min-height: 22rem;
     }
 }
 
@@ -532,9 +707,9 @@ img{
 }
 
 .favoritos img{
-    margin: 2rem 0;
-    height: 12rem;
-    width: 15rem;
+    margin: 1rem 0;
+    width: 20rem;
+    height: 13rem;
 }
 
 .verdee{
@@ -546,9 +721,12 @@ img{
 }
 
 @media (min-width:768px){
+    .favoritos{
+        grid-template-columns: repeat(3,1fr);
+    }
     .favoritos img{
-        height: 20rem;
-        width: 90%;
+        height: 22rem;
+        width: 22rem;
     }
 }
 
@@ -557,7 +735,200 @@ img{
         grid-template-columns: repeat(4,1fr);
     }
     .favoritos img{
-        height: 20rem;
+        width: 21rem;
+        height: 22rem;
+    }
+}
+
+@media (min-width:1350px){
+    .favoritos img{
+        width: 28rem;
+    }
+}
+
+/** CREAR GIF **/
+
+#camara-crear{
+    display: none;
+}
+
+#pelicula-crear{
+    display: none;
+}
+
+.contenedor-crear-gif{
+    border: 2px solid var(--morado);
+    padding: 2rem;
+}
+
+.contenido-crear-gif h1{
+    padding: .5rem;
+}
+
+.contenedor-crear-gif p{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.pasos{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.paso{
+    border: 1px solid var(--morado);
+    border-radius: 5rem;
+    padding: .7rem 1rem;
+    margin: 3rem 0 2rem 0;
+}
+
+.paso-completo{
+    background-color: var(--morado);
+}
+
+.paso p{
+    margin: 0;
+    font-size: 1rem;
+    color: var(--morado);
+    font-weight: bold;
+}
+
+.paso-completo p{
+    color: var(--blaco);
+}
+
+.border-pasos{
+    background-color: var(--morado);
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    margin: 2rem 0;
+}
+
+#crear-gif{
+    margin: 2rem 0;
+}
+
+.repetir-captura{
+    text-align: center;
+}
+
+.repetir-captura p{
+    color: var(--morado);
+    text-decoration: underline;
+    text-decoration-color: var(--verde);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#vid{
+    width: 26.5rem;
+    height: 35rem;
+    margin: 1rem;
+}
+
+#vid2{
+    width: 40rem;
+    height: 35rem;
+    margin: 2rem 0;
+}
+
+.contenedor-crear-gif-completo{
+    background-position: center center;
+    background-size: cover;
+    width: auto;
+    height: 35rem;
+    margin: 2rem 0;
+}
+
+.contenido-subiendo-gif{
+    padding: 13rem 0;
+    background: rgba(87,46,229,0.90);
+    opacity: 0.5;
+    height: 100%;
+    z-index: 2;
+}
+
+.contenido-subiendo-gif img{
+    width:3rem;
+    z-index: 4;
+    position: relative;
+}
+
+.contenido-subiendo-gif p{
+    color: var(--blaco);
+    font-weight: bold;
+    position: relative;
+    z-index: 4;
+    font-size: 1.5rem;
+    opacity: 2;
+}
+
+@media (min-width:768px){
+    .contenedor-crear-gif{
+        min-height: 50rem;
+        padding: 17rem;
+    }
+    #vid{
+        width: 70rem;
+        height: 40rem;
+        margin: 4rem 0;
+    }
+    #vid2{
+        width: 55rem;
+        height: 38rem;
+        margin: 6rem 0;
+    }
+    .contenedor-crear-gif-completo{
+        width: 55rem;
+        height: 38rem;
+        margin: 7rem auto;
+    }
+}
+
+@media (min-width:1024px){
+    .seccion-crear-gif{
+        position: relative;
+    }
+    .contenedor-crear-gif{
+        max-width: 70rem;
+        margin: auto auto;
+    }
+    #camara-crear{
+        display: inline-block;
+        position: absolute;
+        top: 15rem;
+        left: -4rem;
+    }
+    #pelicula-crear{
+        display: inline-block;
+        position: absolute;
+        right: -5rem;
+        bottom: 13rem;
+    }
+    #vid{
+        height: 45rem;
+    }
+    #vid2{
+        height: 40rem;
+        margin: 4rem 0;
+    }
+    .contenedor-crear-gif-completo{
+        width: 40rem;
+        margin: 7rem auto;
+    }
+}
+
+@media (min-width:1350px){
+    #camara-crear{
+        left: 5rem;
+    }
+    #pelicula-crear{
+        right: 3rem;
+    }
+    .contenedor-crear-gif-completo{
+        width: 58rem;
     }
 }
 
