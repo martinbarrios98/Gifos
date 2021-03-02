@@ -180,7 +180,7 @@
                     document.querySelector("#cambiar-modo").text = "MODO OSCURO";
 
             }
-        }
+        } //Funcion para verificar las imagenes segun modo nocturno o claro
 
         function hoover (){
 
@@ -277,7 +277,7 @@
                         hidden: 240
                     });
 
-                    botonGrabar.addEventListener('click', function (){
+                    botonGrabar.addEventListener('click', function (){ // boton para grabar
 
 
                         recorder.startRecording();
@@ -292,7 +292,7 @@
                         `;
                         botonGrabar.replaceWith(botonFinalizar);
 
-                        botonFinalizar.addEventListener('click', function (){
+                        botonFinalizar.addEventListener('click', function (){ // boton para finalizar 
 
                             let botonSubir = document.createElement('a');
                             botonSubir.classList.add('boton');
@@ -306,7 +306,7 @@
                             nodoNuevo.classList.add('repetir-captura');
                             nodoNuevo.innerHTML = `
                                 <p id="repetir-captura">REPETIR CAPTURA</p>
-                            `;
+                            `; //creo boton para repetir proceso
 
                             botonFinalizar.replaceWith(botonSubir);
 
@@ -314,13 +314,13 @@
 
                             contenedor.innerHTML = `<img id="vid2"></img>`;
                             contenedor.classList.add('centrado');
-                            document.querySelector('#vid2').src = recorder.toURL();
+                            document.querySelector('#vid2').src = recorder.toURL();// inserto el contenido grabado par mostrar
 
                             document.querySelector('.contenedor-pasos-gif').insertBefore(nodoNuevo, document.querySelector('.contenedor-pasos-gif').childNodes[3]);
 
                             document.querySelector('#repetir-captura').addEventListener('click', function (){
                                 location.reload(true);
-                            });
+                            }); //funcion para repetir proceso de captura
                             
                             botonSubir.addEventListener('click', function (){
 
@@ -363,7 +363,7 @@
 
                                 }
 
-                            });
+                            });// funcion para proceder a subir el gif creado
             
                         })
                     });
@@ -387,10 +387,35 @@
 
                     document.querySelector('.contenido-crear-gif').innerHTML = `
                     <div class="contenido-subiendo-gif">
+                        <div class="opciones-gif-creado" id="${resultado.data.id}">
+                            <img src="img/icon-download.svg" alt="https://media4.giphy.com/media/${resultado.data.id}/giphy.gif">
+                            <a href="https://media4.giphy.com/media/${resultado.data.id}/giphy.gif" target="_blank"><img src="img/icon-link-normal.svg"></a>
+                        </div>
                         <img src="img/check.svg" alt="imagen-cargando">
                         <p class="centrado">GIFO subido con exito!</p>
                     </div>
                     `;
+
+                    document.querySelector('.opciones-gif-creado').addEventListener('click', function (e){
+                        if(e.target.attributes[0].value === 'img/icon-download.svg'){
+
+                            alert('La descarga puede demorar unos segundos...');
+                
+                            let link = e.target.attributes.alt.value;
+                
+                            fetch(link)
+                            .then(response => response.blob())
+                            .then(blob =>{
+                
+                                    let a = document.createElement('a');
+                                    a.download = `${resultado.data.id}.gif`;
+                                    a.href = window.URL.createObjectURL(blob);
+                                    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+                                    a.click();
+                
+                            })
+                        }
+                    });
 
                     agregarGifos(resultado.data.id);
 

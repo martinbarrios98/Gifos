@@ -333,6 +333,20 @@ img{
     line-height: 3rem;
 }
 
+.trending-resultado{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 45rem;
+    margin: auto auto;
+    flex-wrap: wrap;
+}
+
+.trending-resultado p{
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
 .busqueda-border{
     border: 1px solid var(--morado);
     border-radius: 4rem;
@@ -376,7 +390,7 @@ img{
 }
 
 .icono-serach-busqueda{
-    height: 2.5rem;
+    height: 2rem;
     position: absolute;
     top: 1.9rem;
     bottom: 0;
@@ -418,7 +432,7 @@ img{
     }
     .icono-search{
         bottom: 1.5rem;
-        right: 31rem;
+        right: 23rem;
     }
     .icono-serach-busqueda{
         right: 7rem;
@@ -515,6 +529,9 @@ img{
     }
     #close-gif-max{
         margin-right: 19rem;
+    }
+    .icono-search{
+        right: 31rem;
     }
     
 }
@@ -843,7 +860,7 @@ img{
 }
 
 .contenido-subiendo-gif{
-    padding: 13rem 0;
+    padding: 6rem 0;
     background: rgba(87,46,229,0.90);
     opacity: 0.5;
     height: 100%;
@@ -863,6 +880,14 @@ img{
     z-index: 4;
     font-size: 1.5rem;
     opacity: 2;
+}
+.opciones-gif-creado{
+    text-align: right;
+    margin: 3rem 0;
+}
+
+.opciones-gif-creado img{
+    font-size: 3rem;
 }
 
 @media (min-width:768px){
@@ -884,6 +909,11 @@ img{
         width: 55rem;
         height: 38rem;
         margin: 7rem auto;
+    }
+    .opciones-gif-creado img{
+        font-size: 3rem;
+        margin: 0 1rem;
+        cursor: pointer;
     }
 }
 
@@ -949,5 +979,9 @@ img{
     .boton-morado:hover{
         background-color: var(--morado);
         color: var(--blaco);
+    }
+    .trending-resultado p:hover{
+        text-decoration: underline;
+        text-decoration-color: var(--verde);
     }
 }

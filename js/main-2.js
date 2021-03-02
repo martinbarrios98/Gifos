@@ -56,9 +56,9 @@
     sliderButtonRight.addEventListener('click', sliderTrendingRight);
 
     if(contenedorBusqueda){
-        btnSearch.addEventListener('click', seccionBusqueda);
         inputBusqueda.addEventListener('keydown', sugerenciasBusqueda);
         inputBusqueda.addEventListener('keypress', seccionBusquedaEnter);
+        mostrarBusquedaTrending();
     }
 
 
@@ -71,6 +71,8 @@
             
             btnSearch.classList.remove('icono-serach-busqueda');
             btnSearch.classList.add('icono-search');
+            btnSearch.src = 'img/icon-search.svg';
+            btnSearch.id = 'icono-search';
             document.querySelector('.busqueda').classList.remove('busqueda-border');
             inputBusqueda.classList.remove('busqueda-realizada');
 
@@ -88,6 +90,8 @@
                     document.querySelector('.busqueda').classList.add('busqueda-border');
 
                     btnSearch.classList.remove('icono-search');
+                    btnSearch.src ='img/close.svg';
+                    btnSearch.id = 'cerrar-sugerencias';
                     btnSearch.classList.add('icono-serach-busqueda');
                     inputBusqueda.classList.add('busqueda-realizada');
 
@@ -95,9 +99,10 @@
 
                         let ctnParrafoSuge = document.createElement('div');
                         ctnParrafoSuge.classList.add('ctn-parrafo-suge');
-                        ctnParrafoSuge.setAttribute('id', `${json.data[i].name}`);
+                        
 
                         let nodoP = document.createElement('p');
+                        nodoP.setAttribute('id', `${json.data[i].name}`);
                         nodoP.innerText = json.data[i].name;
 
                         let nodoIcono = document.createElement('i');
@@ -112,15 +117,27 @@
 
                     }
 
-                    
+                    document.querySelector('.sugerencias').addEventListener('click', function (e){
+                        if(e.target.id){
+                            let buscar = e.target.id;
+                            seccionBusquedaSugerencias(buscar);
+                        }
+                    });
 
-                
-                document.querySelector('.sugerencias').addEventListener('click', function (e){
-                    if(e.target.parentElement.classList[0] === 'ctn-parrafo-suge'){
-                        let buscar = e.target.parentElement.id;
-                        seccionBusquedaSugerencias(buscar);
+                    if(btnSearch.id === 'cerrar-sugerencias'){
+                        btnSearch.addEventListener('click', function (){
+                            if(document.querySelector('.sugerencias')){
+                                document.querySelector('.sugerencias').remove();
+                            }
+                            inputBusqueda.value = '';
+                            btnSearch.classList.remove('icono-serach-busqueda');
+                            btnSearch.classList.add('icono-search');
+                            btnSearch.src = 'img/icon-search.svg';
+                            btnSearch.id = 'icono-search';
+                            document.querySelector('.busqueda').classList.remove('busqueda-border');
+                            inputBusqueda.classList.remove('busqueda-realizada');
+                        });
                     }
-                })
 
                 })
                 .catch(error => console.error(error))
@@ -161,7 +178,23 @@
                             let buscar = e.target.parentElement.id;
                             seccionBusquedaSugerencias(buscar);
                         }
-                    })
+                    });
+
+                    
+                    if(btnSearch.id === 'cerrar-sugerencias'){
+                        btnSearch.addEventListener('click', function (){
+                            if(document.querySelector('.sugerencias')){
+                                document.querySelector('.sugerencias').remove();
+                            }
+                            inputBusqueda.value = '';
+                            btnSearch.classList.remove('icono-serach-busqueda');
+                            btnSearch.classList.add('icono-search');
+                            btnSearch.src = 'img/icon-search.svg';
+                            btnSearch.id = 'icono-search';
+                            document.querySelector('.busqueda').classList.remove('busqueda-border');
+                            inputBusqueda.classList.remove('busqueda-realizada');
+                        });
+                    }
 
                 })
                 .catch(error => console.error(error))
@@ -169,55 +202,6 @@
             }
         }
     } //Funcion para mostrar sugerencias
-
-    function seccionBusqueda (e){
-        e.preventDefault();
-        if(inputBusqueda.value === ""){
-            alert('No se ingreso nada');
-        }else{
-            let contenedorSeccionBusqueda = document.querySelector('.contenedor-seccion-busqueda').childNodes;
-
-            if(contenedorSeccionBusqueda.length === 15){
-
-                let nodoViejoH1 =  document.querySelector('#nodo-h1');
-                let nodoViejo = document.querySelector('.contenido-resultado-busqueda');
-                
-                contenedorBusqueda.removeChild(nodoViejoH1);
-                contenedorBusqueda.removeChild(nodoViejo);
-
-                
-                if(document.querySelector('.sugerencias')){
-                    document.querySelector('.sugerencias').remove();
-                }
-                btnSearch.classList.remove('icono-serach-busqueda');
-                btnSearch.classList.add('icono-search');
-                inputBusqueda.classList.remove('busqueda-realizada');
-                document.querySelector('.busqueda').classList.remove('busqueda-border');
-
-                if(document.querySelector('#ver-menos')){
-                    botonVerMenos.style.display = 'none';
-                }
-
-                secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", inputBusqueda.value);
-
-
-
-
-
-            }else{
-                if(document.querySelector('.sugerencias')){
-                    document.querySelector('.sugerencias').remove();
-                }
-                btnSearch.classList.remove('icono-serach-busqueda');
-                btnSearch.classList.add('icono-search');
-                inputBusqueda.classList.remove('busqueda-realizada');
-                document.querySelector('.busqueda').classList.remove('busqueda-border');
-                secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", inputBusqueda.value);
-                
-
-            }
-        }
-    } // busqueda por toque en la lupa
 
     function seccionBusquedaSugerencias (valor) {
         let contenedorSeccionBusqueda = document.querySelector('.contenedor-seccion-busqueda').childNodes;
@@ -238,6 +222,9 @@
             btnSearch.classList.add('icono-search');
             inputBusqueda.classList.remove('busqueda-realizada');
             document.querySelector('.busqueda').classList.remove('busqueda-border');
+            btnSearch.src = 'img/icon-search.svg';
+            btnSearch.id = 'icono-search';
+            inputBusqueda.value = '';
 
             secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", valor);
         }else{
@@ -248,6 +235,9 @@
             btnSearch.classList.add('icono-search');
             inputBusqueda.classList.remove('busqueda-realizada');
             document.querySelector('.busqueda').classList.remove('busqueda-border');
+            btnSearch.src = 'img/icon-search.svg';
+            btnSearch.id = 'icono-search';
+            inputBusqueda.value = '';
             secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", valor);
         }
     } //busqueda por toques en sugerencias
@@ -960,18 +950,55 @@
         let id = e.target.parentElement.id;
         if(e.target.attributes[0].value === 'img/icon-fav.svg'){
             let longitudFav = JSON.parse(localStorage.getItem('favoritos'));
-            alert('Se agrego correctamente el gif a tus favoritos!');
-            if(longitudFav.length === 0){
-                imagenesFav.push(id);
-                localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
-            }else if(longitudFav.length > 0){
-                let arrayOld = JSON.parse(localStorage.getItem('favoritos'));
-                arrayOld.push(id);
-                console.log(arrayOld);
-                localStorage.removeItem('favoritos');
-                imagenesFav = arrayOld;
-                localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
-            };
+                if(longitudFav.length === 0){
+
+                    alert('Se agrego correctamente el gif a tus favoritos!');
+                    longitudFav.push(id);
+                    imagenesFav = longitudFav;
+                    localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
+                    if(window.location.pathname === '/favoritos.html'){
+                        location.reload();
+                    }
+                    
+                }else if(longitudFav.length > 0){
+
+                    let validacion = new Set(longitudFav);
+
+                    if(validacion.has(id) === true){
+                        let respuesta = confirm('Este Gifo pertenece a tus favoritos, deseas eliminarlo?');
+                        if(respuesta === true){
+                            if(longitudFav.length < 2){
+                                localStorage.removeItem('favoritos');
+                                localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
+                                if(window.location.pathname === '/favoritos.html'){
+                                    location.reload();
+                                }
+                            }else{
+                                for(let i=0; i<longitudFav.length; i++){
+                                    if(id === longitudFav[i]){
+                                        longitudFav.splice(i,1);
+                                        imagenesFav = longitudFav;
+                                        localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
+                                    }
+                                }
+                                if(window.location.pathname === '/favoritos.html'){
+                                    location.reload();
+                                }
+                            }
+                        }else{
+                            alert('Se conservo este Gifo en tus favoritos!')
+                        }
+                    }else{
+                            alert('Se agrego este Gifo a tus favoritos!');
+                            longitudFav.push(id);
+                            imagenesFav = longitudFav;
+                            let gifoSinRepetir =  [...new Set(imagenesFav)];
+                            localStorage.setItem('favoritos',JSON.stringify(gifoSinRepetir));
+                            if(window.location.pathname === '/favoritos.html'){
+                                location.reload();
+                            }
+                    }
+                }
 
         }else if(e.target.attributes[0].value === 'img/icon-download.svg'){
 
@@ -1219,19 +1246,51 @@
                 //Evento gif max
         }else if(e.target.attributes[0].value === "img/icon-fav.svg"){
             let id = e.target.parentElement.id;
-            alert('Se agrego correctamente el gif a tus favoritos!');
             let longitudFav = JSON.parse(localStorage.getItem('favoritos'));
-            if(longitudFav.length === 0){
-                imagenesFav.push(id);
-                localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
-            }else if(longitudFav.length > 0){
-                let arrayOld = JSON.parse(localStorage.getItem('favoritos'));
-                arrayOld.push(id);
-                console.log(arrayOld);
-                localStorage.removeItem('favoritos');
-                imagenesFav = arrayOld;
-                localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
-            }
+                if(longitudFav.length === 0){
+                    alert('Operacion Lista!!');
+                    longitudFav.push(id);
+                    imagenesFav = longitudFav;
+                    localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
+                }else if(longitudFav.length > 0){
+                    
+                    let validacion = new Set(longitudFav);
+                    
+                    if(validacion.has(id) === true){
+                        let respuesta = confirm('Este Gifo pertenece a tus favoritos, deseas eliminarlo?');
+                        if(respuesta === true){
+                            if(longitudFav.length < 2){
+                                localStorage.removeItem('favoritos');
+                                localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
+                                if(window.location.pathname === '/favoritos.html'){
+                                    location.reload();
+                                }
+                            }else{
+                                for(let i=0; i<longitudFav.length; i++){
+                                    if(id === longitudFav[i]){
+                                        longitudFav.splice(i,1);
+                                        imagenesFav = longitudFav;
+                                        localStorage.setItem('favoritos',JSON.stringify(imagenesFav));
+                                    }
+                                }
+                                if(window.location.pathname === '/favoritos.html'){
+                                    location.reload();
+                                }
+                            }
+                        }else{
+                            alert('Se conservo este Gifo en tus favoritos!')
+                        }
+                    }else{
+                            alert('Se agrego este Gifo a tus favoritos!');
+                            longitudFav.push(id);
+                            imagenesFav = longitudFav;
+                            let gifoSinRepetir =  [...new Set(imagenesFav)];
+                            localStorage.setItem('favoritos',JSON.stringify(gifoSinRepetir));
+                            if(window.location.pathname === '/favoritos.html'){
+                                location.reload();
+                            }
+                    }
+                }
         }else if(e.target.attributes[0].value === "img/icon-download.svg"){
 
             
@@ -1277,9 +1336,11 @@
                     }
                     btnSearch.classList.remove('icono-serach-busqueda');
                     btnSearch.classList.add('icono-search');
+                    btnSearch.src = 'img/icon-search.svg';
+                    btnSearch.id = 'icono-search';
                     inputBusqueda.classList.remove('busqueda-realizada');
                     document.querySelector('.busqueda').classList.remove('busqueda-border');
-    
+            
                     if(document.querySelector('#ver-menos')){
                         botonVerMenos.style.display = 'none';
                     }
@@ -1296,8 +1357,12 @@
                     }
                     btnSearch.classList.remove('icono-serach-busqueda');
                     btnSearch.classList.add('icono-search');
+                    
+                    btnSearch.src = 'img/icon-search.svg';
+                    btnSearch.id = 'icono-search';
                     inputBusqueda.classList.remove('busqueda-realizada');
                     document.querySelector('.busqueda').classList.remove('busqueda-border');
+
                     secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", inputBusqueda.value);
                     
     
@@ -1305,7 +1370,49 @@
             }
         }
     } //Funcion para busqueda con boton enter
+
+    function mostrarBusquedaTrending (){
+
+        let contenedorTrending = document.querySelector('.trending');
+        let nodoViejo = document.querySelector('.trending').childNodes[3];
+
+        fetch(`https://api.giphy.com/v1/trending/searches?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(json => {
+            let nodoNuevo = document.createElement('div');
+            nodoNuevo.classList.add('trending-resultado')
+            for(let i = 0; i<6; i++){
+                let nodoHIjo = document.createElement('p');
+                nodoHIjo.setAttribute('id', `${json.data[i]}`);
+                nodoHIjo.innerHTML = `${json.data[i]}`;
+                nodoNuevo.appendChild(nodoHIjo)
+            }
+            nodoViejo.replaceWith(nodoNuevo);
+            nodoNuevo.addEventListener('click', busquedaTrending);
+        })
+        .catch(console.log('error'))
+
+    } // Funcion para mostrar trending en busqueda
     
+    function busquedaTrending (e){
+        let busqueda = e.target.id;
+
+        let contenedorSeccionBusqueda = document.querySelector('.contenedor-seccion-busqueda').childNodes;
+
+        if(contenedorSeccionBusqueda.length === 15){
+            let nodoViejoH1 =  document.querySelector('#nodo-h1');
+            let nodoViejo = document.querySelector('.contenido-resultado-busqueda');
+            
+            nodoViejoH1.remove();
+            nodoViejo.remove();
+
+            secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", busqueda);
+        }else {
+            secciontrending(apiKey, 30, contenedorBusqueda, "api.giphy.com/v1/gifs/search", busqueda);
+        }
+
+
+    } // Funcion para insertar en el doom el trending de busqueda
     
 
     });
